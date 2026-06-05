@@ -26,7 +26,7 @@
 - Tại sao khác: Hai câu nói về hai lĩnh vực hoàn toàn không liên quan (lập trình và thiên văn học), không có điểm chung nào về mặt ngữ nghĩa nên độ tương đồng sẽ rất thấp.
 
 **Tại sao cosine similarity được ưu tiên hơn Euclidean distance cho text embeddings?**
-> *Viết 1-2 câu:* Cosine similarity chỉ quan tâm đến hướng (góc) của vector mà không bị ảnh hưởng bởi độ lớn (magnitude) hay độ dài của văn bản, giúp so sánh chính xác sự tương đồng về ngữ nghĩa bất kể văn bản đó dài hay ngắn.
+Cosine similarity chỉ quan tâm đến hướng (góc) của vector mà không bị ảnh hưởng bởi độ lớn (magnitude) hay độ dài của văn bản, giúp so sánh chính xác sự tương đồng về ngữ nghĩa bất kể văn bản đó dài hay ngắn.
 
 ### Chunking Math (Ex 1.2)
 
@@ -35,7 +35,7 @@
 > *Đáp án:* 23 chunks.
 
 **Nếu overlap tăng lên 100, chunk count thay đổi thế nào? Tại sao muốn overlap nhiều hơn?**
-> *Viết 1-2 câu:* Khi overlap tăng lên 100, số lượng chunk sẽ tăng lên: `ceil((10000 - 100)/(500 - 100)) = ceil(9900/400) = 25` chunks. Việc tăng overlap giúp đảm bảo tính liên kết ngữ nghĩa không bị đứt đoạn ở ranh giới giữa các chunk, bảo toàn ngữ cảnh tốt hơn cho RAG.
+ Khi overlap tăng lên 100, số lượng chunk sẽ tăng lên: `ceil((10000 - 100)/(500 - 100)) = ceil(9900/400) = 25` chunks. Việc tăng overlap giúp đảm bảo tính liên kết ngữ nghĩa không bị đứt đoạn ở ranh giới giữa các chunk, bảo toàn ngữ cảnh tốt hơn cho RAG.
 
 ---
 
@@ -46,7 +46,7 @@
 **Domain:** Tài liệu kỹ thuật, RAG System Design và Internal Knowledge Assistant.
 
 **Tại sao nhóm chọn domain này?**
-> *Viết 2-3 câu:* Nhóm chọn domain này vì các tài liệu phản ánh chính quá trình xây dựng hệ thống đang thực hành trong Lab 7. Điều này giúp nhóm vừa kiểm thử được hệ thống Retrieval vừa có thêm kiến thức nền tảng thực tiễn về Vector Store, Embedding và Chunking Strategies.
+ Nhóm chọn domain này vì các tài liệu phản ánh chính quá trình xây dựng hệ thống đang thực hành trong Lab 7. Điều này giúp nhóm vừa kiểm thử được hệ thống Retrieval vừa có thêm kiến thức nền tảng thực tiễn về Vector Store, Embedding và Chunking Strategies.
 
 ### Data Inventory
 
@@ -84,10 +84,10 @@ Chạy `ChunkingStrategyComparator().compare()` trên tài liệu `ChienLuocChun
 **Loại:** RecursiveChunker
 
 **Mô tả cách hoạt động:**
-> *Viết 3-4 câu:* Chiến lược này hoạt động bằng cách đệ quy chia nhỏ văn bản dựa trên một danh sách các dấu phân cách ưu tiên (ví dụ: `\n\n`, `\n`, `. `, khoảng trắng). Đầu tiên, nó cố gắng tách văn bản ở mức khối lớn (đoạn văn). Nếu một khối vẫn lớn hơn `chunk_size` quy định, nó sẽ tiếp tục đệ quy tách khối đó bằng các ký tự phân cách ưu tiên thấp hơn cho đến khi tất cả các đoạn đều nằm trong giới hạn cho phép, sau đó gộp các đoạn nhỏ lại để tối ưu không gian.
+Chiến lược này hoạt động bằng cách đệ quy chia nhỏ văn bản dựa trên một danh sách các dấu phân cách ưu tiên (ví dụ: `\n\n`, `\n`, `. `, khoảng trắng). Đầu tiên, nó cố gắng tách văn bản ở mức khối lớn (đoạn văn). Nếu một khối vẫn lớn hơn `chunk_size` quy định, nó sẽ tiếp tục đệ quy tách khối đó bằng các ký tự phân cách ưu tiên thấp hơn cho đến khi tất cả các đoạn đều nằm trong giới hạn cho phép, sau đó gộp các đoạn nhỏ lại để tối ưu không gian.
 
 **Tại sao tôi chọn strategy này cho domain nhóm?**
-> *Viết 2-3 câu:* Tài liệu của nhóm chứa nhiều markdown, bullet points và đoạn văn kỹ thuật. Recursive chunking rất lý tưởng cho cấu trúc này vì nó ưu tiên cắt ở các dấu ngắt đoạn tự nhiên `\n\n`, giúp đảm bảo một ý tưởng hoàn chỉnh không bị cắt làm đôi như khi dùng `FixedSizeChunker`.
+Tài liệu của nhóm chứa nhiều markdown, bullet points và đoạn văn kỹ thuật. Recursive chunking rất lý tưởng cho cấu trúc này vì nó ưu tiên cắt ở các dấu ngắt đoạn tự nhiên `\n\n`, giúp đảm bảo một ý tưởng hoàn chỉnh không bị cắt làm đôi như khi dùng `FixedSizeChunker`.
 
 ### So Sánh: Strategy của tôi vs Baseline
 
