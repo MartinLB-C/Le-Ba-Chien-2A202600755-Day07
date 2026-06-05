@@ -17,6 +17,7 @@ from src.embeddings import (
 )
 from src.models import Document
 from src.store import EmbeddingStore
+from src.llm import MockLLM
 
 SAMPLE_FILES = [
     "data/python_intro.txt",
@@ -56,10 +57,7 @@ def load_documents_from_files(file_paths: list[str]) -> list[Document]:
     return documents
 
 
-def demo_llm(prompt: str) -> str:
-    """A simple mock LLM for manual RAG testing."""
-    preview = prompt[:400].replace("\n", " ")
-    return f"[DEMO LLM] Generated answer from prompt preview: {preview}..."
+
 
 
 def run_manual_demo(question: str | None = None, sample_files: list[str] | None = None) -> int:
@@ -112,7 +110,8 @@ def run_manual_demo(question: str | None = None, sample_files: list[str] | None 
         print(f"   content preview: {result['content'][:120].replace(chr(10), ' ')}...")
 
     print("\n=== KnowledgeBaseAgent Test ===")
-    agent = KnowledgeBaseAgent(store=store, llm_fn=demo_llm)
+    mock_llm = MockLLM()
+    agent = KnowledgeBaseAgent(store=store, llm_fn=mock_llm)
     print(f"Question: {query}")
     print("Agent answer:")
     print(agent.answer(query, top_k=3))

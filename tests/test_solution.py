@@ -215,7 +215,7 @@ class TestKnowledgeBaseAgent(unittest.TestCase):
             Document(id="d3", content="Vector databases store embeddings for similarity search.", metadata={}),
         ]
         store.add_documents(docs)
-        return KnowledgeBaseAgent(store=store, llm_fn=lambda prompt: "Answer based on context.")
+        return KnowledgeBaseAgent(store=store, llm_fn=lambda c, q: f"mock answer to {q}")
 
     def test_answer_returns_string(self):
         agent = self._make_agent()
