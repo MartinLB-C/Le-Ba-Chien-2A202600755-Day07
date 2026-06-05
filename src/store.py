@@ -105,11 +105,7 @@ class EmbeddingStore:
         else:
             for doc in docs:
                 record = self._make_record(doc)
-                existing_idx = next((i for i, r in enumerate(self._store) if r["id"] == record["id"]), None)
-                if existing_idx is not None:
-                    self._store[existing_idx] = record
-                else:
-                    self._store.append(record)
+                self._store.append(record)
 
     def search(self, query: str, top_k: int = 5) -> list[dict[str, Any]]:
         """
