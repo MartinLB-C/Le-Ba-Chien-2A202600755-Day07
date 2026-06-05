@@ -1,7 +1,9 @@
 # Báo Cáo Lab 7: Embedding & Vector Store
 
-**Họ tên:** Lê Bá Chiến
-**Nhóm:** Nhóm 2
+**Thành viên nhóm b1:** 
+1. Đàm Mạnh Dũng (2A202600741)
+2. Nguyễn Hoàng Thanh Tùng (2A202600846)
+3. Lê Bá Chiến (2A202600755)
 **Ngày:** 05/06/2026
 
 ---
