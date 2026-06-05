@@ -98,9 +98,9 @@ Chạy `ChunkingStrategyComparator().compare()` trên tài liệu `ChienLuocChun
 
 | Thành viên | Strategy | Retrieval Score (/10) | Điểm mạnh | Điểm yếu |
 |-----------|----------|----------------------|-----------|----------|
-| Tôi | RecursiveChunker | 9 | Cân bằng hoàn hảo giữa độ lớn chunk và giữ ngữ cảnh | Thuật toán chạy phức tạp và tốn tài nguyên hơn |
-| Bạn A | FixedSizeChunker | 6 | Đơn giản, độ dài ổn định, tốc độ thực thi nhanh | Mất mát ý nghĩa nghiêm trọng ở các điểm ngắt đoạn |
-| Bạn B | SentenceChunker | 8 | Tôn trọng ranh giới ngôn ngữ tự nhiên tuyệt đối | Đôi khi có chunk bị vỡ kích thước do gặp câu ghép rất dài |
+| Lê Bá Chiến (2A202600755) | RecursiveChunker | 9 | Cân bằng hoàn hảo giữa độ lớn chunk và giữ ngữ cảnh | Thuật toán chạy phức tạp và tốn tài nguyên hơn |
+| Đàm Mạnh Dũng (2A202600741) | FixedSizeChunker | 6 | Đơn giản, độ dài ổn định, tốc độ thực thi nhanh | Mất mát ý nghĩa nghiêm trọng ở các điểm ngắt đoạn |
+| Nguyễn Hoàng Thanh Tùng (2A202600846) | SentenceChunker | 8 | Tôn trọng ranh giới ngôn ngữ tự nhiên tuyệt đối | Đôi khi có chunk bị vỡ kích thước do gặp câu ghép rất dài |
 
 **Strategy nào tốt nhất cho domain này? Tại sao?**
 > *Viết 2-3 câu:* RecursiveChunker là chiến lược hiệu quả nhất. Lý do là các tài liệu kỹ thuật có sự phân rã cấu trúc rất rõ nét từ cấp độ Phần (Header) -> Đoạn văn (Paragraph) -> Câu (Sentence). Việc phân chia đệ quy nương theo cấu trúc này để giữ nguyên vẹn nội dung cho embedding model.
