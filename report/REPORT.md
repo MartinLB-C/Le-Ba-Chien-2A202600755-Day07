@@ -154,14 +154,14 @@ Dự đoán và thử nghiệm với mô hình Local `all-MiniLM-L6-v2`:
 
 | Pair | Sentence A | Sentence B | Dự đoán | Actual Score | Đúng? |
 |------|-----------|-----------|---------|--------------|-------|
-| 1 | The dog chased the cat. | A canine pursued the feline. | high | 0.6355 | Có |
-| 2 | The bank of the river is very muddy. | I need to deposit some money in the bank. | low | 0.2634 | Có |
-| 3 | Python is a popular programming language. | The solar system contains eight planets. | low | 0.0513 | Có |
-| 4 | The weather is very hot today. | The weather is freezing cold today. | low | 0.6644 | Bất ngờ |
-| 5 | I love learning computer science. | Tôi thích học khoa học máy tính. | high | 0.0423 | Bất ngờ |
+| 1 | Phân đoạn văn bản là một kỹ thuật tiền xử lý quan trọng cho LLM. | Chia nhỏ tài liệu giúp tối ưu hóa dữ liệu đầu vào cho mô hình ngôn ngữ lớn. | high | 0.6187 | Có |
+| 2 | Giới hạn của Context Window xác định lượng token tối đa có thể xử lý. | Mô hình ngôn ngữ tự động sinh ra văn bản dựa trên xác suất từ vựng. | low | 0.1983 | Có |
+| 3 | Recursive Character Text Splitter sử dụng các ký tự phân tách theo thứ tự ưu tiên. | Python là một ngôn ngữ lập trình phổ biến trong khoa học dữ liệu. | low | -0.0151 | Có |
+| 4 | Sử dụng kích thước chunk nhỏ giúp giảm độ trễ phản hồi. | Sử dụng kích thước chunk lớn làm tăng độ trễ phản hồi. | low | 0.9417 | Bất ngờ |
+| 5 | Semantic Chunking chia tài liệu thành các câu dựa trên khoảng cách ngữ nghĩa. | This method splits text into semantic pieces using embedding distances. | high | 0.1009 | Bất ngờ |
 
 **Kết quả nào bất ngờ nhất? Điều này nói gì về cách embeddings biểu diễn nghĩa?**
-> *Viết 2-3 câu:* Bất ngờ nhất là Pair 4 (Hai câu đối lập nhau về thời tiết lại có độ tương đồng rất cao là 0.66) và Pair 5 (Bản dịch tiếng Việt có độ tương đồng cực thấp là 0.04). Điều này cho thấy Embeddings phụ thuộc cực kỳ lớn vào không gian đa ngôn ngữ của tập huấn luyện (MiniLM-L6-v2 không hiểu Tiếng Việt), và mô hình cũng chú ý vào cấu trúc/chủ đề câu (cùng nói về thời tiết) hơn là sự phủ định hay đối nghịch logic.
+> *Viết 2-3 câu:* Bất ngờ nhất là Pair 4 (Hai câu có ý nghĩa trái ngược nhau về kết quả nhưng độ tương đồng rất cao 0.94) và Pair 5 (Một câu tiếng Việt và một câu dịch tiếng Anh có ý nghĩa y hệt nhưng tương đồng thấp 0.10). Điều này cho thấy mô hình `all-MiniLM-L6-v2` chỉ tập trung vào cấu trúc câu, bộ từ vựng xuất hiện cùng ngữ cảnh (chunk, độ trễ) chứ không hiểu được logic đối nghịch, đồng thời mô hình này cũng không có khả năng hiểu đa ngôn ngữ (Multilingual) tốt.
 
 ---
 
